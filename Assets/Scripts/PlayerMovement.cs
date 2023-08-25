@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController2D controller;
+    public Animator animator;
+
     float horizontalMove = 0f;
     bool jump = false;
 
@@ -15,15 +17,24 @@ public class PlayerMovement : MonoBehaviour
     {
 
         //get the direction key -1 if l and 1 if r
-        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;   
+        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
         //jump checkk
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
+            animator.SetBool("Jump", jump);
             UnityEngine.Debug.Log("Jumped!");
         }
     }
+    
+    public void Onlanding()
+    {
+        animator.SetBool("Jump", false);
+    }
+
+
     void FixedUpdate()
     {
         //move our character

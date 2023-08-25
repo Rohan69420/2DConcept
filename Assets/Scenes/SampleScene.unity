@@ -3253,6 +3253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1328369693}
+  animator: {fileID: 1328369686}
   runSpeed: 40
 --- !u!58 &1328369692
 CircleCollider2D:
